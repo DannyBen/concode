@@ -10,8 +10,8 @@ module Concode
       @capitalize = capitalize
       @max_chars = max_chars
 
-      @max_chars = 3 if max_chars.between? 1, 3
-      @max_chars = 0 if max_chars > 9
+      @max_chars = 3 if @max_chars.between? 1, 3
+      @max_chars = 0 if @max_chars > 9
     end
 
     def generate(text)
@@ -31,12 +31,12 @@ module Concode
     end
 
     def particles!
-      result = [ Dictionary.nouns ]
-      adjectives.times { result.push Dictionary.adjectives }
-
-      if max_chars > 0
-        result[0] = Dictionary.nouns[0...Dictionary.noun_lengths[max_chars]]
-        adjectives.times { |i| result[i+1] = Dictionary.adjectives[0...Dictionary.adjective_lengths[max_chars]] }
+      if max_chars == 0
+        result = [ Dictionary.nouns ]
+        adjectives.times { result.push Dictionary.adjectives }
+      else
+        result = [ Dictionary.nouns[0...noun_lengths] ]
+        adjectives.times { result.push Dictionary.adjectives[0...adjective_lengths] }
       end
 
       result
@@ -57,6 +57,14 @@ module Concode
     def text_hash(text)
       text = text.to_s
       Digest::MD5.hexdigest(text).to_i(16) * 36413321723440003717
+    end
+
+    def noun_lengths
+      Dictionary.noun_lengths[max_chars]
+    end
+
+    def adjective_lengths
+      Dictionary.adjective_lengths[max_chars]
     end
   end
 end

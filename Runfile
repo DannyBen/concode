@@ -21,6 +21,9 @@ action :changelog do
 end
 
 action :debug do
+  a = Concode::Generator.new
+  puts "nil: #{a.generate 'asd'}"
+
   11.times do |i|
     a = Concode::Generator.new max_chars: i
     puts "#{i}: #{a.generate 'asd'}"
