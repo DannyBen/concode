@@ -9,9 +9,11 @@ include Concode
 options = OpenStruct.new words: 2, chars: 0, caps: false, glue: '-'
 
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: #{$0} <string> [options]"
+  opts.program_name = 'concode'
   opts.summary_width = 20
   opts.summary_indent = '  '
+
+  opts.banner = "Usage: #{opts.program_name} <string> [options]"
 
   opts.separator ""
   opts.separator "Options:"
@@ -52,7 +54,7 @@ end
 
 string = ARGV[0]
 
-generator = Generator.new words: options.words, max_chars: options.chars, 
+generator = Generator.new words: options.words, chars: options.chars, 
   glue: options.glue, capitalize: options.caps
 
 puts generator.generate string

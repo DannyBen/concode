@@ -2,16 +2,16 @@ require 'digest'
 
 module Concode
   class Generator
-    attr_reader :words, :max_chars, :glue, :capitalize
+    attr_reader :words, :chars, :glue, :capitalize
 
-    def initialize(words: 2, max_chars: 0, glue: '-', capitalize: false)
+    def initialize(words: 2, chars: 0, glue: '-', capitalize: false)
       @words = words
       @glue = glue
       @capitalize = capitalize
-      @max_chars = max_chars
+      @chars = chars
 
-      @max_chars = 3 if @max_chars.between? 1, 3
-      @max_chars = 0 if @max_chars > 9
+      @chars = 3 if @chars.between? 1, 3
+      @chars = 0 if @chars > 9
     end
 
     def generate(text)
@@ -31,7 +31,7 @@ module Concode
     end
 
     def particles!
-      if max_chars == 0
+      if chars == 0
         result = [ nouns ]
         adjective_count.times { result.push adjectives }
       else
@@ -64,11 +64,11 @@ module Concode
     end
 
     def nouns_length
-      Dictionary.noun_lengths[max_chars]
+      Dictionary.noun_lengths[chars]
     end
 
     def adjectives_length
-      Dictionary.adjective_lengths[max_chars]
+      Dictionary.adjective_lengths[chars]
     end
 
     def nouns
