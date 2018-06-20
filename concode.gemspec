@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables = ["concode"]
   s.homepage    = 'https://github.com/dannyben/concode'
   s.license     = 'MIT'
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.2.0"
 
   s.add_development_dependency 'byebug', '~> 10.0'
   s.add_development_dependency 'github_changelog_generator', '~> 1.14'
