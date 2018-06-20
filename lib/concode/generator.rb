@@ -2,10 +2,10 @@ require 'digest'
 
 module Concode
   class Generator
-    attr_reader :adjectives, :max_chars, :glue, :capitalize
+    attr_reader :words, :max_chars, :glue, :capitalize
 
-    def initialize(adjectives: 1, max_chars: 0, glue: '-', capitalize: false)
-      @adjectives = adjectives
+    def initialize(words: 2, max_chars: 0, glue: '-', capitalize: false)
+      @words = words
       @glue = glue
       @capitalize = capitalize
       @max_chars = max_chars
@@ -32,11 +32,11 @@ module Concode
 
     def particles!
       if max_chars == 0
-        result = [ Dictionary.nouns ]
-        adjectives.times { result.push Dictionary.adjectives }
+        result = [ nouns ]
+        adjective_count.times { result.push adjectives }
       else
-        result = [ Dictionary.nouns[0...noun_lengths] ]
-        adjectives.times { result.push Dictionary.adjectives[0...adjective_lengths] }
+        result = [ nouns[0...nouns_length] ]
+        adjective_count.times { result.push adjectives[0...adjectives_length] }
       end
 
       result
@@ -59,12 +59,24 @@ module Concode
       Digest::MD5.hexdigest(text).to_i(16) * 36413321723440003717
     end
 
-    def noun_lengths
+    def adjective_count
+      words - 1
+    end
+
+    def nouns_length
       Dictionary.noun_lengths[max_chars]
     end
 
-    def adjective_lengths
+    def adjectives_length
       Dictionary.adjective_lengths[max_chars]
+    end
+
+    def nouns
+      Dictionary.nouns
+    end
+
+    def adjectives
+      Dictionary.adjectives
     end
   end
 end
