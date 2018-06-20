@@ -1,0 +1,28 @@
+require "runfile-tasks"
+require "byebug"
+require_relative 'lib/concode'
+
+title   "Concode Developer Toolbelt"
+summary "Runfile tasks for building the Concode gem"
+version Concode::VERSION
+
+RunfileTasks::RubyGems.all 'concode'
+RunfileTasks::Testing.rspec
+
+help   "Run interactive console"
+action :console, :c do
+  run "bundle exec bin/console"
+end
+
+help   "Generate changelog"
+action :changelog do
+  run 'github_changelog_generator'
+  run "git commit -am 'update changelog' && git push"
+end
+
+action :debug do
+  11.times do |i|
+    a = Concode::Generator.new max_chars: i
+    puts "#{i}: #{a.generate 'asd'}"
+  end
+end
