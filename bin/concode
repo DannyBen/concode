@@ -1,6 +1,58 @@
 #!/usr/bin/env ruby
 
 require 'concode'
-require 'concode/command_line'
+require 'optparse'
+require 'ostruct'
 
-Concode::CommandLine.execute ARGV
+include Concode
+
+options = OpenStruct.new words: 2, chars: 0, caps: false, glue: '-'
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} <string> [options]"
+  opts.summary_width = 20
+  opts.summary_indent = '  '
+
+  opts.separator ""
+  opts.separator "Options:"
+
+  opts.on("-w", "--words N", Integer, "Number of words to generate") do |v|
+    options[:words] = v
+  end
+
+  opts.on("-c", "--chars N", Integer, "Max characters per word") do |v|
+    options[:chars] = v
+  end
+
+  opts.on("-g", "--glue CHAR", "Word separator") do |v|
+    options[:glue] = v
+  end
+
+  opts.on("-C", "--caps", "Capitalize words") do |v|
+    options[:caps] = v
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit -1
+  end
+
+  opts.on_tail("--version", "Show version") do
+    puts VERSION
+    exit -1
+  end
+end
+
+parser.parse! ARGV
+
+if ARGV.empty?
+  puts parser
+  exit -1
+end
+
+string = ARGV[0]
+
+generator = Generator.new words: options.words, max_chars: options.chars, 
+  glue: options.glue, capitalize: options.caps
+
+puts generator.generate string
