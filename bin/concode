@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'concode'
+require 'concode/command_line'
+
+Concode::CommandLine.execute ARGV
