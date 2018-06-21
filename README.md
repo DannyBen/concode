@@ -1,6 +1,11 @@
 Concode
 ==================================================
 
+[![Gem Version](https://badge.fury.io/rb/concode.svg)](https://badge.fury.io/rb/concode)
+[![Build Status](https://travis-ci.com/DannyBen/concode.svg?branch=master)](https://travis-ci.com/DannyBen/concode)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6aa0a88a0276cf20b84f/maintainability)](https://codeclimate.com/github/DannyBen/concode/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6aa0a88a0276cf20b84f/test_coverage)](https://codeclimate.com/github/DannyBen/concode/test_coverage)
+
 ---
 
 Generate *consistent-codenames* from any string (Heroku style, aka Haiku).
