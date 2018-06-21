@@ -79,19 +79,20 @@ Library Usage
 ```ruby
 require 'concode'
 
-# Basic use:
+# basic use:
 
 generator = Concode::Generator.new
 puts generator.generate 'something annoying'
 # => annoyed-poem
 
-# Or, with all the options:
+# or, with all the options:
 
 generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
 puts generator.generate 'something annoying'
 # => Wise Rude Boot
 
-# To get the available combinations, use:
+# get the available combinations with:
+
 puts generator.word_count
 # => 7402200
 ```
