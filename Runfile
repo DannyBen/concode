@@ -23,4 +23,8 @@ end
 action :debug do
   generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
   puts generator.generate 'something annoying'
+
+  generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
+  puts generator.word_count
+
 end

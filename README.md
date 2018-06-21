@@ -85,6 +85,10 @@ puts generator.generate 'something annoying'
 generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
 puts generator.generate 'something annoying'
 # => Wise Rude Boot
+
+# To get the available combinations, use:
+puts generator.word_count
+# => 7402200
 ```
 
 
