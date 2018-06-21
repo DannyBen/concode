@@ -32,16 +32,23 @@ Command Line Usage
 --------------------------------------------------
 
 ```shell
-$ concode
-Usage: concode <string> [options]
+$ concode --help
+
+Usage:
+  concode <string> [options]
+  concode --random [options]
+  concode --count [options]
+  concode (-h|--help|-v|--version)
 
 Options:
   -w, --words N        Number of words to generate
   -c, --chars N        Max characters per word
   -g, --glue CHAR      Word separator
   -C, --caps           Capitalize words
+  -n, --count          Count possible combinations
+  -r, --random         Generate a random code
   -h, --help           Show this message
-      --version        Show version
+  -v, --version        Show version
 ```
 
 ### Examples
@@ -55,6 +62,9 @@ ancient-plausible-term
 
 $ concode hello --words 3 --chars 3 --caps --glue ' '
 Cut Red Bar
+
+$ concode --random -w4
+cruel-aggressive-cute-world
 ```
 
 
