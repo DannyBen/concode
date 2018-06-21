@@ -10,6 +10,8 @@ rvm:
 
 before_install:
 - gem install bundler
+- pip install 'requests[security]'
+- pip install codenamize
 
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
