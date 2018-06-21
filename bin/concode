@@ -3,17 +3,25 @@
 require 'concode'
 require 'optparse'
 require 'ostruct'
+require 'securerandom'
 
 include Concode
 
-options = OpenStruct.new words: 2, chars: 0, caps: false, glue: '-'
+options = OpenStruct.new words: 2, chars: 0, 
+  caps: false, glue: '-', count: false
 
 parser = OptionParser.new do |opts|
   opts.program_name = 'concode'
   opts.summary_width = 20
   opts.summary_indent = '  '
 
-  opts.banner = "Usage: #{opts.program_name} <string> [options]"
+  opts.banner = [
+    "Usage:",
+    "  #{opts.program_name} <string> [options]",
+    "  #{opts.program_name} --random [options]",
+    "  #{opts.program_name} --count [options]",
+    "  #{opts.program_name} (-h|--help|-v|--version)",
+    ].join "\n"
 
   opts.separator ""
   opts.separator "Options:"
@@ -34,21 +42,30 @@ parser = OptionParser.new do |opts|
     options[:caps] = v
   end
 
+  opts.on("-n", "--count", "Count possible combinations") do |v|
+    options[:count] = v
+  end
+
+  opts.on("-r", "--random", "Generate a random code") do |v|
+    ARGV << SecureRandom.hex
+  end
+
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
     exit -1
   end
 
-  opts.on_tail("--version", "Show version") do
+  opts.on_tail("-v", "--version", "Show version") do
     puts VERSION
     exit -1
   end
+
 end
 
-parser.parse! ARGV
+parser.parse!
 
-if ARGV.empty?
-  puts parser
+if ARGV.empty? and !options.count
+  puts parser.banner
   exit -1
 end
 
@@ -57,4 +74,9 @@ string = ARGV[0]
 generator = Generator.new words: options.words, chars: options.chars, 
   glue: options.glue, capitalize: options.caps
 
-puts generator.generate string
+if options.count
+  puts generator.word_count
+else
+  puts generator.generate string
+end
+

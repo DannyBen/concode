@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name        = 'concode'
   s.version     = Concode::VERSION
   s.date        = Date.today.to_s
-  s.summary     = "Description soon"
-  s.description = "Description soon"
+  s.summary     = "Generate consistent-codenames from any string"
+  s.description = "Generate consistent-codenames from any string (Heroku style, aka Haiku)"
   s.authors     = ["Danny Ben Shitrit"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']

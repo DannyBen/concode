@@ -1,0 +1,15 @@
+Usage:
+  concode <string> [options]
+  concode --random [options]
+  concode --count [options]
+  concode (-h|--help|-v|--version)
+
+Options:
+  -w, --words N        Number of words to generate
+  -c, --chars N        Max characters per word
+  -g, --glue CHAR      Word separator
+  -C, --caps           Capitalize words
+  -n, --count          Count possible combinations
+  -r, --random         Generate a random code
+  -h, --help           Show this message
+  -v, --version        Show version

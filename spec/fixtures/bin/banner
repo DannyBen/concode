@@ -1,0 +1,5 @@
+Usage:
+  concode <string> [options]
+  concode --random [options]
+  concode --count [options]
+  concode (-h|--help|-v|--version)
