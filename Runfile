@@ -20,11 +20,41 @@ action :changelog do
   run "git commit -am 'update changelog' && git push"
 end
 
-action :debug do
-  generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
-  puts generator.generate 'something annoying'
+help   "Generate stats table"
+action :stats do
+  separator = "---------+-----------+-----------+-----------+-----------\n"
+  table = separator
+  table += "         | 1 words   | 2 words   | 3 words   | 4 words\n"
+  table += separator
 
-  generator = Concode::Generator.new words: 3, chars: 4, capitalize: true, glue: ' '
-  puts generator.word_count
+  [3,4,5,6,7,8,9,0].each do |chars|
+    table += " #{chars} chars"
+    (1..4).each do |words|
+      generator = Concode::Generator.new words: words, chars: chars
+      
+      count = generator.word_count
+      color = :pur
 
+      if count > 1_000_000_000_000
+        color = :red
+        count = "#{(count/1_000_000_000_000.to_f).round 1}T"
+      elsif count > 1_000_000_000
+        color = :blu
+        count = "#{(count/1_000_000_000.to_f).round 1}B"
+      elsif count > 1_000_000
+        color = :cyn
+        count = "#{(count/1_000_000.to_f).round 1}M"
+      elsif count > 1_000
+        color = :grn
+        count = "#{(count/1_000.to_f).round 1}K"
+      end
+      table += " | !txt#{color}!#{count.to_s.rjust 9}!txtrst!"
+    end
+    table += "\n"
+  end
+  table += separator
+
+  say table
 end
+
+require_relative 'debug' if File.exist? 'debug.rb'
