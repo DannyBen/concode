@@ -9,7 +9,10 @@ rvm:
   - "2.5.0"
 
 before_install:
+# - source ~/virtualenv/python3.6/bin/activate
+# - pip3 install codenamize
 - gem install bundler
+- pip install --user codenamize
 
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
