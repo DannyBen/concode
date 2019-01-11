@@ -8,6 +8,7 @@ Bundler.require :default, :development
 require 'yaml'
 
 include Concode
+include Colsole
 require_relative 'spec_mixin'
 
 RSpec.configure do |c|

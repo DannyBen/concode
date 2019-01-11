@@ -17,7 +17,7 @@ describe 'bin/concode' do
 
   describe '--version' do
     it "shows version" do
-      expect(`#{subject} --version`.strip).to eq VERSION
+      expect(`#{subject} --version`.strip).to eq Concode::VERSION
     end
   end
 
