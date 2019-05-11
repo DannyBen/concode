@@ -1,12 +1,9 @@
 language: ruby
 
-env:
-  global:
-  - CC_TEST_REPORTER_ID=0fa8fb467c775649b98adcb311f7d7310ce4022d2ba9d8b000d7ade0fd3f56da
-
 rvm:
   - "2.3.0"
-  - "2.5.0"
+  - "2.5.3"
+  - "2.6.3"
 
 before_install:
 # - source ~/virtualenv/python3.6/bin/activate
@@ -14,13 +11,5 @@ before_install:
 - gem install bundler
 - pip install --user codenamize
 
-before_script:
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-- chmod +x ./cc-test-reporter
-- ./cc-test-reporter before-build
-
 script:
 - bundle exec rspec
-
-after_script: 
-- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
