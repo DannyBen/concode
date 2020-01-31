@@ -33,7 +33,7 @@ jobs:
         bundle install --jobs 4 --retry 3
 
     - name: Pip install codenamize
-      run: |pip install --user wheel codenamize
+      run: pip install --user wheel codenamize
 
     - name: Run tests
       run: bundle exec rspec
