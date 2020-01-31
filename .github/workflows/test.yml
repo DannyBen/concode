@@ -32,10 +32,13 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
 
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with: { python-version: '3.6' }
+
     - name: Install python codenamize
       run: |
         pip3 install codenamize
-        python3 -m site &> /dev/null && PATH="$PATH:`python3 -m site --user-base`/bin"
         codenamize --version
 
     - name: Run tests
