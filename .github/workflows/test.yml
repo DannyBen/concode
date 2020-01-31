@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix: 
-        ruby: ['2.4', '2.5', '2.6', '2.7']
-        python: ['3.7']
+      matrix: { ruby: ['2.4', '2.5', '2.6', '2.7'] }
 
     steps:
     - name: Checkout code
@@ -28,11 +26,6 @@ jobs:
       uses: actions/setup-ruby@v1
       with: { ruby-version: '${{ matrix.ruby }}' }
 
-    - name: Set up Python ${{ matrix.python }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-
     - name: Bundle install
       run: |
         gem install bundler
@@ -41,8 +34,7 @@ jobs:
 
     - name: Install python codenamize
       run: |
-        python -m pip install --upgrade pip
-        pip install --user codenamize
+        pip3 install --user codenamize
         codenamize --version
 
     - name: Run tests
