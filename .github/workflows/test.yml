@@ -35,6 +35,7 @@ jobs:
     - name: Install python codenamize
       run: |
         pip3 install codenamize
+        find / -name codenamize
         codenamize --version
 
     - name: Run tests
