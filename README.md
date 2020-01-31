@@ -2,7 +2,7 @@ Concode
 ==================================================
 
 [![Gem Version](https://badge.fury.io/rb/concode.svg)](https://badge.fury.io/rb/concode)
-[![Build Status](https://travis-ci.com/DannyBen/concode.svg?branch=master)](https://travis-ci.com/DannyBen/concode)
+[![Build Status](https://github.com/DannyBen/concode/workflows/Test/badge.svg)](https://github.com/DannyBen/concode/actions?query=workflow%3ATest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6aa0a88a0276cf20b84f/maintainability)](https://codeclimate.com/github/DannyBen/concode/maintainability)
 
 ---
