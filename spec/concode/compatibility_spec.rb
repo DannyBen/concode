@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Codenamize Compatibility', :codenamize do
-  let(:ours)   { Generator.new(@opts).generate @word }
+  let(:ours)   { Generator.new(**@opts).generate @word }
   let(:theirs) { `codenamize #{@pyopts} '#{@word}'`.strip }
 
   before do
