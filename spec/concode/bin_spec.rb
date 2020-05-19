@@ -5,13 +5,13 @@ describe 'bin/concode' do
 
   describe 'without arguments' do
     it "shows banner" do
-      expect(`#{subject}`).to match_fixture 'bin/banner'
+      expect(`#{subject}`).to match_approval 'bin/banner'
     end
   end
 
   describe '--help' do
     it "shows usage" do
-      expect(`#{subject} --help`).to match_fixture 'bin/usage'
+      expect(`#{subject} --help`).to match_approval 'bin/usage'
     end
   end
 

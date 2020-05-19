@@ -31,7 +31,7 @@ describe Generator do
         (1..9).each do |i|
           actual[i] = described_class.new(words: i).generate 'asd'
         end
-        expect(actual.to_yaml).to match_fixture 'generator/words_argument'
+        expect(actual.to_yaml).to match_approval 'generator/words_argument'
       end
     end
 
@@ -41,7 +41,7 @@ describe Generator do
         (3..9).each do |i|
           actual[i] = described_class.new(chars: i).generate 'asd'
         end
-        expect(actual.to_yaml).to match_fixture 'generator/chars_argument'
+        expect(actual.to_yaml).to match_approval 'generator/chars_argument'
       end
     end
 
@@ -70,7 +70,7 @@ describe Generator do
           actual["#{words} words, #{chars} chars"] = described_class.new(words: words, chars: chars).word_count
         end
       end
-      expect(actual.to_yaml).to match_fixture('generator/word_count')
+      expect(actual.to_yaml).to match_approval('generator/word_count')
     end
   end
 end
