@@ -1,6 +1,8 @@
 require "runfile-tasks"
 require "byebug"
+require "colsole"
 require_relative 'lib/concode'
+include Colsole
 
 title   "Concode Developer Toolbelt"
 summary "Runfile tasks for building the Concode gem"
@@ -11,14 +13,14 @@ RunfileTasks::Testing.rspec
 
 help   "Run interactive console"
 action :console, :c do
-  run "bundle exec bin/console"
+  exec "bundle exec bin/console"
 end
 
 help   "Generate changelog and append old changelog"
 action :changelog do
-  run "git changelog --save"
+  system "git changelog --save"
   # append older changelog (prior to switching to git-changelog)
-  run "cat .changelog.old.md >> CHANGELOG.md"
+  system "cat .changelog.old.md >> CHANGELOG.md"
 end
 
 help   "Generate stats table"
