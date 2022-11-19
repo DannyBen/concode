@@ -5,7 +5,7 @@ def adjectives_list
 end
 
 def adjectives!
-  result = ["aback","abaft","abandoned","abashed","aberrant"]
+  result = ["aback", "abaft", "abandoned", "abashed", "aberrant"]
   result.sort_by!(&:size)
 end
 
@@ -14,7 +14,7 @@ def nouns_list
 end
 
 def nouns!
-  result = ["a","ability","abroad","abuse","access","accident","account"]
+  result = ["a", "ability", "abroad", "abuse", "access", "accident", "account"]
   result.sort_by!(&:size)
 end
 
@@ -34,17 +34,17 @@ def collect_lengths(source)
   result
 end
 
-def codenamize_particles(obj=nil, adjectives: 1, max_chars: 0, algo: 'md5')
+def codenamize_particles(obj = nil, adjectives: 1, max_chars: 0, algo: 'md5')
   max_chars = 3 if max_chars.between? 1, 3
   max_chars = 0 if max_chars > 9
 
   # Prepare codename word lists and calculate size of codename space
-  particles = [ nouns_list ]
+  particles = [nouns_list]
   adjectives.times { particles.push adjectives_list }
 
   if max_chars > 0
     particles[0] = nouns_list[0...noun_lengths[max_chars]]
-    adjectives.times { |i| particles[i+1] = adjectives_list[0...adjective_lengths[max_chars]] }
+    adjectives.times { |i| particles[i + 1] = adjectives_list[0...adjective_lengths[max_chars]] }
   end
 
   total_words = particles.map(&:size).reduce(:*)

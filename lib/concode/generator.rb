@@ -24,18 +24,18 @@ module Concode
       @word_count ||= particles.map(&:size).reduce(:*)
     end
 
-    private
+  private
 
     def particles
       @particles ||= particles!
     end
 
     def particles!
-      if chars == 0
-        result = [ nouns ]
+      if chars.zero?
+        result = [nouns]
         adjective_count.times { result.push adjectives }
       else
-        result = [ nouns[0...nouns_length] ]
+        result = [nouns[0...nouns_length]]
         adjective_count.times { result.push adjectives[0...adjectives_length] }
       end
 
