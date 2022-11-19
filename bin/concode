@@ -7,7 +7,7 @@ require 'securerandom'
 
 include Concode
 
-options = OpenStruct.new words: 2, chars: 0, 
+options = OpenStruct.new words: 2, chars: 0,
   caps: false, glue: '-', count: false
 
 parser = OptionParser.new do |opts|
@@ -16,62 +16,61 @@ parser = OptionParser.new do |opts|
   opts.summary_indent = '  '
 
   opts.banner = [
-    "Usage:",
+    'Usage:',
     "  #{opts.program_name} <string> [options]",
     "  #{opts.program_name} --random [options]",
     "  #{opts.program_name} --count [options]",
     "  #{opts.program_name} (-h|--help|-v|--version)",
-    ].join "\n"
+  ].join "\n"
 
-  opts.separator ""
-  opts.separator "Options:"
+  opts.separator ''
+  opts.separator 'Options:'
 
-  opts.on("-w", "--words N", Integer, "Number of words to generate") do |v|
+  opts.on('-w', '--words N', Integer, 'Number of words to generate') do |v|
     options[:words] = v
   end
 
-  opts.on("-c", "--chars N", Integer, "Max characters per word") do |v|
+  opts.on('-c', '--chars N', Integer, 'Max characters per word') do |v|
     options[:chars] = v
   end
 
-  opts.on("-g", "--glue CHAR", "Word separator") do |v|
+  opts.on('-g', '--glue CHAR', 'Word separator') do |v|
     options[:glue] = v
   end
 
-  opts.on("-C", "--caps", "Capitalize words") do |v|
+  opts.on('-C', '--caps', 'Capitalize words') do |v|
     options[:caps] = v
   end
 
-  opts.on("-n", "--count", "Count possible combinations") do |v|
+  opts.on('-n', '--count', 'Count possible combinations') do |v|
     options[:count] = v
   end
 
-  opts.on("-r", "--random", "Generate a random code") do |v|
+  opts.on('-r', '--random', 'Generate a random code') do |_v|
     ARGV << SecureRandom.hex
   end
 
-  opts.on_tail("-h", "--help", "Show this message") do
+  opts.on_tail('-h', '--help', 'Show this message') do
     puts opts
-    exit -1
+    exit(-1)
   end
 
-  opts.on_tail("-v", "--version", "Show version") do
+  opts.on_tail('-v', '--version', 'Show version') do
     puts VERSION
-    exit -1
+    exit(-1)
   end
-
 end
 
 parser.parse!
 
-if ARGV.empty? and !options.count
+if ARGV.empty? && !options.count
   puts parser.banner
-  exit -1
+  exit(-1)
 end
 
 string = ARGV[0]
 
-generator = Generator.new words: options.words, chars: options.chars, 
+generator = Generator.new words: options.words, chars: options.chars,
   glue: options.glue, capitalize: options.caps
 
 if options.count
@@ -79,4 +78,3 @@ if options.count
 else
   puts generator.generate string
 end
-

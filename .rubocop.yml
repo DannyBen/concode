@@ -1,0 +1,26 @@
+# require: rubocop-rspec
+
+inherit_gem:
+  rentacop: rentacop.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+    - Include
+
+AllCops:
+  TargetRubyVersion: 2.6.0
+  Exclude:
+    - 'port/**/*'
+
+Layout/LineLength:
+  Exclude:
+    - lib/concode/dictionary.rb
+
+Style/NumericLiterals:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'bin/concode'
+

@@ -1,9 +1,9 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'byebug'
+gem 'colsole'
 gem 'rspec'
 gem 'rspec_approvals'
-gem 'colsole'
 gem 'runfile'
 gem 'runfile-tasks'
 gem 'simplecov'

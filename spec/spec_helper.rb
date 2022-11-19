@@ -18,7 +18,7 @@ RSpec.configure do |c|
 
   unless have_codenamize
     c.filter_run_excluding :codenamize
-    c.after :suite do 
+    c.after :suite do
       puts "\n\u001b[31mNote: Compatibility tests were skipped since codenamize is not installed\u001b[0m"
     end
   end
