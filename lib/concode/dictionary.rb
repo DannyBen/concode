@@ -80,7 +80,7 @@ module Concode
       def collect_lengths(source)
         result = {}
         (3..9).each do |len|
-          result[len] = source.select { |i| i.size <= len }.size
+          result[len] = source.count { |i| i.size <= len }
         end
         result
       end
