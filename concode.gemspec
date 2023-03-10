@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.executables = ['concode']
   s.homepage    = 'https://github.com/dannyben/concode'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 2.6.0'
+  s.required_ruby_version = '>= 2.7'
   s.metadata['rubygems_mfa_required'] = 'true'
 end
