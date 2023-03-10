@@ -13,13 +13,9 @@ inherit_mode:
     - Include
 
 AllCops:
-  TargetRubyVersion: 2.6.0
+  TargetRubyVersion: 2.7
   Exclude:
     - 'port/**/*'
-
-Layout/LineLength:
-  Exclude:
-    - lib/concode/dictionary.rb
 
 Style/NumericLiterals:
   Enabled: false
