@@ -7,5 +7,5 @@
 /Gemfile.lock
 /.yardoc
 /toc.txt
-/debug.rb
+/debug.runfile
 *.gem

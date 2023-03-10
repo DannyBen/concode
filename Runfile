@@ -1,20 +1,13 @@
-require "runfile-tasks"
 require "byebug"
 require "colsole"
-require_relative 'lib/concode'
-include Colsole
+require 'concode/version'
 
 title   "Concode Developer Toolbelt"
 summary "Runfile tasks for building the Concode gem"
 version Concode::VERSION
 
-RunfileTasks::RubyGems.all 'concode'
-RunfileTasks::Testing.rspec
-
-help   "Run interactive console"
-action :console, :c do
-  exec "bundle exec bin/console"
-end
+import_gem 'runfile-tasks/gem'
+import 'debug'
 
 help   "Generate changelog and append old changelog"
 action :changelog do
@@ -25,6 +18,8 @@ end
 
 help   "Generate stats table"
 action :stats do
+  require 'concode'
+
   separator = "---------+-----------+-----------+-----------+-----------\n"
   table = separator
   table += "         | 1 words   | 2 words   | 3 words   | 4 words\n"
@@ -36,22 +31,22 @@ action :stats do
       generator = Concode::Generator.new words: words, chars: chars
       
       count = generator.word_count
-      color = :pur
+      color = :m
 
       if count > 1_000_000_000_000
-        color = :red
+        color = :r
         count = "#{(count/1_000_000_000_000.to_f).round 1}T"
       elsif count > 1_000_000_000
-        color = :blu
+        color = :b
         count = "#{(count/1_000_000_000.to_f).round 1}B"
       elsif count > 1_000_000
-        color = :cyn
+        color = :c
         count = "#{(count/1_000_000.to_f).round 1}M"
       elsif count > 1_000
-        color = :grn
+        color = :g
         count = "#{(count/1_000.to_f).round 1}K"
       end
-      table += " | !txt#{color}!#{count.to_s.rjust 9}!txtrst!"
+      table += " | #{color}`#{count.to_s.rjust 9}`"
     end
     table += "\n"
   end
@@ -59,5 +54,3 @@ action :stats do
 
   say table
 end
-
-require_relative 'debug' if File.exist? 'debug.rb'
