@@ -11,8 +11,13 @@ Gem::Specification.new do |s|
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']
   s.executables = ['concode']
-  s.homepage    = 'https://github.com/dannyben/concode'
+  s.homepage    = 'https://github.com/DannyBen/concode'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 2.7'
-  s.metadata['rubygems_mfa_required'] = 'true'
+  s.required_ruby_version = '>= 3.0'
+
+  s.metadata = {
+    'bug_tracker_uri'       => 'https://github.com/DannyBen/concode/issues',
+    'source_code_uri'       => 'https://github.com/DannyBen/concode',
+    'rubygems_mfa_required' => 'true',
+  }
 end
