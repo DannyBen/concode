@@ -1,12 +1,6 @@
 Concode
 ==================================================
 
-[![Gem Version](https://badge.fury.io/rb/concode.svg)](https://badge.fury.io/rb/concode)
-[![Build Status](https://github.com/DannyBen/concode/workflows/Test/badge.svg)](https://github.com/DannyBen/concode/actions?query=workflow%3ATest)
-[![Maintainability](https://api.codeclimate.com/v1/badges/6aa0a88a0276cf20b84f/maintainability)](https://codeclimate.com/github/DannyBen/concode/maintainability)
-
----
-
 Generate *consistent-codenames* from any string (Heroku style, aka Haiku).
 
 This is a Ruby port of Python's [codenamize][1].
