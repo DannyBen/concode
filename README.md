@@ -1,6 +1,8 @@
 Concode
 ==================================================
 
+![repocard](https://repocard.dannyben.com/svg/concode.svg)
+
 Generate *consistent-codenames* from any string (Heroku style, aka Haiku).
 
 This is a Ruby port of Python's [codenamize][1].
